@@ -177,7 +177,8 @@
     (lisp-pred typep ?designator desig:object-designator)
     (member ?keyword-key (:name :urdf-name))
     (property-member (?keyword-key ?name) ?designator)
-    (assert-type ?name symbol "OBJECT SPEC:PROPERTY"))
+    ;; (assert-type ?name (or symbol string) "OBJECT SPEC:PROPERTY"))
+    (assert-type ?name symbol  "OBJECT SPEC:PROPERTY"))
 
   (<- (%property ?designator (:part-of ?environment))
     (lisp-pred typep ?designator desig:object-designator)

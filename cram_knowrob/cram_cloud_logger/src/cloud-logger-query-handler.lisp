@@ -50,6 +50,13 @@
   (ccl::clear-detected-objects)
   (setf ccl::*episode-name* (get-url-from-send-query-1 "Episode" "mem_episode_start" "Episode")))
 
+(defun start-existing-episode ()
+  (when *episode-name*
+    (progn
+      (print "Previous episode recording is still running. Stopping the recording ...")
+      (stop-episode)))
+  (setf ccl::*episode-name* (get-url-from-send-query-1 "Episode" "current_episode" "Episode" )))
+
 (defun stop-episode ()
   (send-query-1-without-result "mem_episode_stop" ccl::*episode-name*)
   (setf ccl::*episode-name* nil))
@@ -64,7 +71,7 @@
 (defun get-url-from-send-query-1 (url-parameter query-name &rest query-parameters)
   (let* ((query (create-query query-name query-parameters))
          (query-result (send-query-1 query)))
-    (when (eq query-result nil) (break))
+    ;; (when (eq query-result nil) (break))
     (ccl::get-url-variable-result-as-str-from-json-prolog-result url-parameter query-result)))
 
 (defun send-comment (action-inst comment)
@@ -73,7 +80,7 @@
 (defun send-object-action-parameter (action-inst object-designator)
   (let* ((object-name (get-designator-property-value-str object-designator :NAME))
          (object-ease-id (get-ease-object-id-of-detected-object-by-name object-name)))
-    (when object-ease-id 
+    (when object-ease-id
       (send-query-1-without-result "mem_event_includes" action-inst object-ease-id "'http://www.ease-crc.org/ont/EASE-OBJ.owl#AffectedObject'"))))
 
 
@@ -290,7 +297,7 @@
 
 (defun send-pose-stamped-list-action-parameter (action-inst list-name pose-stamped-list)
   (let ((pose-stamp (get-last-element-in-list pose-stamped-list)))
-    (if pose-stamp (progn 
+    (if pose-stamp (progn
                      (send-rdf-query (convert-to-prolog-str action-inst)
                                      "knowrob:goalLocation" (convert-to-prolog-str (send-create-pose-stamped pose-stamp)))
                      (if (string-equal "left" list-name)
