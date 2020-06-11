@@ -55,7 +55,7 @@
     (progn
       (print "Previous episode recording is still running. Stopping the recording ...")
       (stop-episode)))
-  (setf ccl::*episode-name* (get-url-from-send-query-1 "Episode" "current_episode" "Episode" )))
+  (setf ccl::*episode-name* (get-url-from-send-query-1 "Episode" "knowrob_memory:current_episode" "Episode" )))
 
 (defun stop-episode ()
   (send-query-1-without-result "mem_episode_stop" ccl::*episode-name*)
