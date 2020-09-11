@@ -220,8 +220,8 @@ Converts these coordinates into CRAM-TF:*FIXED-FRAME* frame and returns a list i
            (object ?object)
            (context :table-setting)
            ;; (grasps (:back :top :front))
-           (desig:when ?arm
-             (arms (?arm)))
+           ;; (desig:when ?arm
+           ;;   (arms (?arm)))
            ;; (desig:when ?grasp
            ;;   (grasp ?grasp))
            (target ?deliver-location)

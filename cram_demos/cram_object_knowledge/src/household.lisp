@@ -273,9 +273,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; milk ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defparameter *milk-grasp-xy-offset* 0.01 "in meters")
-(defparameter *milk-grasp-z-offset* 0.03 "in meters")
+(defparameter *milk-grasp-z-offset* 0.05 "in meters")
 (defparameter *milk-pregrasp-xy-offset* 0.15 "in meters")
-(defparameter *milk-lift-z-offset* 0.15 "in meters")
+(defparameter *milk-lift-z-offset* 0.08 "in meters")
 
 ;; BACK grasp
 (man-int:def-object-type-to-gripper-transforms :milk '(:left :right) :back
