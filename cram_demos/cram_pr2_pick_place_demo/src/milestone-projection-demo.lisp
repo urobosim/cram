@@ -199,7 +199,8 @@ Converts these coordinates into CRAM-TF:*FIXED-FRAME* frame and returns a list i
     (let* ((?deliver-pose (cram-tf:ensure-pose-in-frame
                            (btr:ensure-pose
                             (cdr (assoc ?object-type
-                                        *delivery-poses-dining-table*)))
+                                        ;; *delivery-poses-dining-table*)))
+                                        *delivery-poses*)))
                            cram-tf:*fixed-frame*))
            (?deliver-location (a location (pose ?deliver-pose)))
            (?color (cdr (assoc ?object-type *object-colors*)))
