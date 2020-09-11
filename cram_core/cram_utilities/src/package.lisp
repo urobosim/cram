@@ -83,7 +83,7 @@
   #.`(:import-from :sb-thread             #:thread ,@+semaphore-symbols+)
   #.`(:import-from :sb-concurrency        ,@+queue-symbols+)
   #.`(:import-from :sb-concurrency        ,@+mailbox-symbols+)
-  ;; #.`(:import-from :synchronization-tools ,@+barrier-symbols+)
+  #.`(:import-from :synchronization-tools ,@+barrier-symbols+)
   #.`(:export
       ;; clos
       #:hooks
@@ -161,7 +161,7 @@
       #:make-synchronized-hash-table
       #:with-hash-table-locked
       ;; utils
-      #:minimum #:maximum #:compare
+      #:minimum #:maximum #:random-with-minimum #:compare
       #:execute-string #:replace-all
       ;; semaphores, reexported from sb-thread
       ,@+semaphore-symbols+

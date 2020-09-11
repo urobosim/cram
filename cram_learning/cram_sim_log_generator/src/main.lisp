@@ -1,6 +1,6 @@
 (in-package :cslg)
 (defparameter *mongo-logger* nil)
-(defparameter num-experiments 1)
+(defparameter num-experiments 5)
 (defparameter connection-retries 0)
 (defparameter *start-time* 0)
 (defparameter *global-timer* 0)
@@ -33,11 +33,10 @@
   ;;(ros-load:load-system "cram_boxy_description" :cram-boxy-description)
   ;;(setf cram-bullet-reasoning-belief-state:*spawn-debug-window* nil)
   (setf cram-tf:*tf-broadcasting-enabled* t)
+  (setf cram-urdf-projection-reasoning::*projection-checks-enabled* nil)
   (roslisp-utilities:startup-ros :name "cram" :anonymous nil)
   ;;(setq roslisp::*debug-stream* nil)
   (print "Init bullet world")
-  (setf ccl::*is-logging-enabled* t)
-  (ccl::init-logging)
   (loop for x from 0 to (- num-experiments 1)
         do (progn
              (print "Start")
@@ -46,7 +45,6 @@
              (pr2-pms:with-real-robot (demo::park-robot))
              (pr2-pms:with-real-robot (demo::setting-demo))
              ;; (urdf-proj:with-simulated-robot (demo::setting-demo))
-
              (ccl::stop-episode)
              (print "End")))
   (ccl::finish-logging))
