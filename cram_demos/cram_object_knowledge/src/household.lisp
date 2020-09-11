@@ -375,7 +375,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;; bowl ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defparameter *bowl-grasp-x-offset* 0.07 "in meters")
-(defparameter *bowl-grasp-z-offset* 0.0 "in meters")
+(defparameter *bowl-grasp-z-offset* 0.03 "in meters")
 (defparameter *bowl-pregrasp-z-offset* 0.20 "in meters")
 
 ;; TOP grasp

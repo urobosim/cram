@@ -29,6 +29,7 @@
 
 (defun main ()
   (ros-load:load-system "cram_pr2_description" :cram-pr2-description)
+  (ros-load:load-system "cram_pr2_process_modules" :cram-pr2-process-modules)
   ;;(ros-load:load-system "cram_boxy_description" :cram-boxy-description)
   ;;(setf cram-bullet-reasoning-belief-state:*spawn-debug-window* nil)
   (setf cram-tf:*tf-broadcasting-enabled* t)
@@ -42,7 +43,10 @@
              (print "Start")
              (ccl::start-episode)
              ;;(urdf-proj:with-simulated-robot (demo::demo-random nil ))
-             (urdf-proj:with-simulated-robot (demo::setting-demo))
+             (pr2-pms:with-real-robot (demo::park-robot))
+             (pr2-pms:with-real-robot (demo::setting-demo))
+             ;; (urdf-proj:with-simulated-robot (demo::setting-demo))
+
              (ccl::stop-episode)
              (print "End")))
   (ccl::finish-logging))
