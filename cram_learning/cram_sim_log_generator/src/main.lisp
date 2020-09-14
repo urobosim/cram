@@ -43,7 +43,7 @@
              (ccl::start-episode)
              ;;(urdf-proj:with-simulated-robot (demo::demo-random nil ))
              (pr2-pms:with-real-robot (demo::park-robot))
-             (pr2-pms:with-real-robot (demo::setting-demo))
+             (pr2-pms:with-real-robot (demo::setting-demo '(:bowl :spoon :milk :breakfast-cereal)))
              ;; (urdf-proj:with-simulated-robot (demo::setting-demo))
              (ccl::stop-episode)
              (print "End")))
